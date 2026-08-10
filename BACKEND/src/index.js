@@ -13,21 +13,23 @@ const videoRouter = require("./routes/videocreator");
 
 
 const allowedOrigins = [
-  "http://localhost:5173",
-  process.env.FRONTEND_URL
-];
+  "http://localhost:5174",
+  process.env.FRONTEND_URL,
+].filter(Boolean);
 
-
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  credentials: true,
-}));
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        console.log("Blocked CORS origin:", origin);
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
 
 app.use(express.json()); //convert json to js object
 app.use(cookieParser());

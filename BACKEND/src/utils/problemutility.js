@@ -46,7 +46,7 @@ const submitToken = async (resultTokens) => {
         url: `${process.env.JUDGE0_URL}/submissions/batch`,
         params: {
             tokens: tokenString,
-            base64_encoded: "false",
+            base64_encoded: "true",
            fields: "source_code,language_id,stdin,expected_output,stdout,stderr,compile_output,time,memory,status,status_id,created_at,finished_at"
         }
     };
@@ -60,7 +60,29 @@ const submitToken = async (resultTokens) => {
 
             const response = await axios.request(options);
 
-            const results = response.data.submissions;
+            const results = response.data.submissions.map(test => ({
+    ...test,
+
+    stdin: test.stdin
+        ? Buffer.from(test.stdin, "base64").toString("utf8")
+        : "",
+
+    expected_output: test.expected_output
+        ? Buffer.from(test.expected_output, "base64").toString("utf8")
+        : "",
+
+    stdout: test.stdout
+        ? Buffer.from(test.stdout, "base64").toString("utf8")
+        : "",
+
+    stderr: test.stderr
+        ? Buffer.from(test.stderr, "base64").toString("utf8")
+        : "",
+
+    compile_output: test.compile_output
+        ? Buffer.from(test.compile_output, "base64").toString("utf8")
+        : ""
+}));
 
             // console.log(
             //     results.map(r => ({
