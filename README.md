@@ -1,16 +1,16 @@
-# 🚀 LeetCode Clone
+# 🚀 DevShala
 
-A full-stack **LeetCode-inspired coding platform** built using the **MERN stack**. The application provides an interactive environment where users can explore coding problems, write and submit solutions, view submission history, access solution videos, and get AI-powered coding assistance.
+> **A full-stack coding platform for learning, practicing, and improving programming skills.**
 
-The project follows a separate **Frontend + Backend architecture**, with a React-based frontend communicating with a Node.js/Express backend through REST APIs.
+DevShala is a **LeetCode-inspired full-stack coding platform** built using the **MERN stack**. It provides an interactive environment where users can browse coding problems, write and execute code, submit solutions, track submission history, watch solution videos, and get AI-powered coding assistance.
+
+The platform combines **real-time code execution through Judge0**, **AI assistance using Google Gemini**, secure authentication, role-based authorization, and an admin panel for managing coding content.
 
 ---
 
 ## 🌐 Live Demo
 
-| Resource                 | Link                                                                            |
-| ------------------------ | ------------------------------------------------------------------------------- |
-| 🚀 **Live Application**  | [Open Devshala](https://devshala-rho.vercel.app/) |
+🚀 **[Open DevShala](https://devshala-rho.vercel.app/)**
 
 ---
 
@@ -18,61 +18,130 @@ The project follows a separate **Frontend + Backend architecture**, with a React
 
 ### 👤 User Authentication
 
-* User registration and login
-* JWT-based authentication
-* Secure password hashing using bcrypt
-* Protected routes
-* User authorization
-* Admin authorization
+- User registration and login
+- JWT-based authentication
+- Secure password hashing using bcrypt
+- Protected routes
+- User authorization
+- Role-based admin authorization
+
+---
 
 ### 🧩 Coding Problems
 
-* Browse coding problems
-* View detailed problem statements
-* Interactive coding environment
-* Monaco Editor integration
-* Submit solutions
-* View submission results
-* Track previous submissions
+- Browse coding problems
+- View detailed problem statements
+- Interactive coding environment
+- Monaco Editor integration
+- Submit coding solutions
+- Multi-language code execution using **Judge0**
+- Automated test-case evaluation
+- View submission results
+- Track previous submissions
+- Runtime and memory information
+
+---
+
+### ⚡ Judge0 Code Execution
+
+DevShala uses **Judge0** as the code execution engine for compiling and running user-submitted programs.
+
+### Submission Flow
+
+```text
+User
+ │
+ ▼
+Monaco Editor
+ │
+ │ Submit Code
+ ▼
+Express Backend
+ │
+ │ Create Submission
+ ▼
+Judge0 API
+ │
+ ├── Compile Code
+ ├── Execute Test Cases
+ └── Return Execution Result
+ │
+ ▼
+Express Backend
+ │
+ ├── Evaluate Result
+ ├── Store Submission
+ └── Return Status
+ │
+ ▼
+React Frontend
+ │
+ ▼
+User
+```
+
+Judge0 allows DevShala to execute submitted programs against test cases and return execution results to the platform.
+
+---
 
 ### 🤖 AI Coding Assistant
 
-The platform includes an AI-powered coding assistant using **Google Gemini API**.
+DevShala integrates the **Google Gemini API** to provide an AI-powered coding assistant.
 
 Users can use the AI assistant to:
 
-* Understand coding problems
-* Ask programming-related questions
-* Get hints
-* Discuss possible approaches
-* Clarify programming concepts
-* Get help while solving problems
+- Understand coding problems
+- Ask programming-related questions
+- Get hints
+- Discuss possible approaches
+- Clarify programming concepts
+- Get help while solving problems
 
-The Gemini API is integrated through the backend so sensitive API credentials are not exposed directly to the frontend.
+The Gemini API is accessed through the backend so sensitive API credentials are not exposed directly in the frontend.
+
+---
 
 ### 🎥 Video Solutions
 
-* Problem-specific solution videos
-* Video-based explanations
-* Admin video upload functionality
-* Video management through the admin panel
-* Cloud-based media management
+- Problem-specific solution videos
+- Video-based explanations
+- Admin video upload functionality
+- Video management through the admin panel
+- Cloud-based media management using Cloudinary
+
+---
 
 ### 🛠️ Admin Panel
 
-The application includes a dedicated admin panel for managing the coding platform.
+DevShala includes a dedicated admin panel for managing the coding platform.
 
 Admins can:
 
-* Create coding problems
-* Delete coding problems
-* Upload solution videos
-* Manage solution videos
-* Perform protected administrative operations
+- Create coding problems
+- Delete coding problems
+- Manage problem information
+- Upload solution videos
+- Manage solution videos
+- Perform protected administrative operations
+
+Administrative operations are protected using role-based authorization.
+
+---
 
 ### 📊 Submission History
 
 Users can view their previous submissions and track their coding activity.
+
+Submission information includes:
+
+- Problem
+- Submitted code
+- Programming language
+- Execution status
+- Test cases
+- Runtime
+- Memory usage
+- Error information
 
 ---
 
@@ -80,144 +149,102 @@ Users can view their previous submissions and track their coding activity.
 
 ## Frontend
 
-* **React**
-* **Vite**
-* **JavaScript**
-* **Tailwind CSS**
-* **DaisyUI**
-* **Redux Toolkit**
-* **React Redux**
-* **React Router**
-* **Axios**
-* **Monaco Editor**
-* **React Hook Form**
-* **Zod**
-* **Lucide React**
+- **React**
+- **Vite**
+- **JavaScript**
+- **Tailwind CSS**
+- **DaisyUI**
+- **Redux Toolkit**
+- **React Redux**
+- **React Router**
+- **Axios**
+- **Monaco Editor**
+- **React Hook Form**
+- **Zod**
+- **Lucide React**
+
+---
 
 ## Backend
 
-* **Node.js**
-* **Express.js**
-* **MongoDB**
-* **Mongoose**
-* **Redis**
-* **JWT**
-* **bcrypt**
-* **Axios**
-* **dotenv**
-* **CORS**
+- **Node.js**
+- **Express.js**
+- **MongoDB**
+- **Mongoose**
+- **Redis**
+- **JWT**
+- **bcrypt**
+- **Axios**
+- **dotenv**
+- **CORS**
+
+---
 
 ## External Services
 
-* **Google Gemini API** — AI-powered coding assistance
-* **Cloudinary** — Video/media management
-* **Redis** — Backend caching/support
+| Service | Purpose |
+|---|---|
+| **Judge0** | Code compilation and execution |
+| **Google Gemini API** | AI-powered coding assistance |
+| **Cloudinary** | Solution video/media management |
+| **Redis** | Token management and backend support |
+| **Vercel** | Frontend deployment |
+| **Render** | Backend deployment |
 
 ---
 
 # 🏗️ System Architecture
 
 ```text
-                         ┌─────────────────────┐
-                         │        User         │
-                         └──────────┬──────────┘
-                                    │
-                                    ▼
-                         ┌─────────────────────┐
-                         │   React Frontend    │
-                         │                     │
-                         │ • React             │
-                         │ • Redux Toolkit     │
-                         │ • Tailwind CSS      │
-                         │ • Monaco Editor     │
-                         └──────────┬──────────┘
-                                    │
-                              REST APIs
-                                    │
-                                    ▼
-                         ┌─────────────────────┐
-                         │   Express Backend   │
-                         │                     │
-                         │ • Authentication    │
-                         │ • Problems          │
-                         │ • Submissions       │
-                         │ • AI Chat           │
-                         │ • Videos            │
-                         │ • Admin             │
-                         └──────┬──────┬───────┘
-                                │      │
-                  ┌─────────────┘      └──────────────┐
-                  ▼                                   ▼
-          ┌───────────────┐                   ┌───────────────┐
-          │    MongoDB    │                   │ External APIs │
-          │               │                   │               │
-          │ • Users       │                   │ • Gemini AI   │
-          │ • Problems    │                   │ • Cloudinary  │
-          │ • Submissions │                   │               │
-          │ • Videos      │                   └───────────────┘
-          └───────────────┘
-```
-
----
-
-# 📁 Project Structure
-
-```text
-LeetCode-Project/
-│
-├── Frontend/
-│   │
-│   ├── public/
-│   │
-│   ├── src/
-│   │   │
-│   │   ├── assets/
-│   │   │
-│   │   ├── components/
-│   │   │   ├── AdminDelete.jsx
-│   │   │   ├── AdminPanel.jsx
-│   │   │   ├── AdminUpload.jsx
-│   │   │   ├── AdminVideo.jsx
-│   │   │   ├── ChatAI.jsx
-│   │   │   ├── Editorial.jsx
-│   │   │   └── SubmissionHistory.jsx
-│   │   │
-│   │   ├── pages/
-│   │   │   ├── Admin.jsx
-│   │   │   ├── Homepage.jsx
-│   │   │   ├── Login.jsx
-│   │   │   ├── ProblemPage.jsx
-│   │   │   └── Signup.jsx
-│   │   │
-│   │   ├── store/
-│   │   ├── utils/
-│   │   ├── App.jsx
-│   │   └── main.jsx
-│   │
-│   ├── package.json
-│   └── vercel.json
-│
-│
-└── Backend/
-    │
-    ├── src/
-    │   │
-    │   ├── Controllers/
-    │   ├── config/
-    │   ├── middleware/
-    │   ├── modules/
-    │   ├── routes/
-    │   ├── utils/
-    │   └── index.js
-    │
-    └── package.json
+                         ┌─────────────────────────┐
+                         │          User           │
+                         └────────────┬────────────┘
+                                      │
+                                      ▼
+                         ┌─────────────────────────┐
+                         │     React Frontend      │
+                         │                         │
+                         │ • React                 │
+                         │ • Redux Toolkit         │
+                         │ • Tailwind CSS          │
+                         │ • Monaco Editor         │
+                         │ • React Router          │
+                         └────────────┬────────────┘
+                                      │
+                                  REST APIs
+                                      │
+                                      ▼
+                         ┌─────────────────────────┐
+                         │    Express Backend      │
+                         │                         │
+                         │ • Authentication        │
+                         │ • Problems              │
+                         │ • Submissions           │
+                         │ • Judge0 Integration     │
+                         │ • AI Chat               │
+                         │ • Videos                │
+                         │ • Admin                  │
+                         └───────┬─────────┬───────┘
+                                 │         │
+                    ┌────────────┘         └───────────────┐
+                    ▼                                      ▼
+             ┌───────────────┐                    ┌─────────────────┐
+             │    MongoDB    │                    │ External APIs  │
+             │               │                    │                 │
+             │ • Users       │                    │ • Judge0        │
+             │ • Problems    │                    │ • Gemini AI     │
+             │ • Submissions │                    │ • Cloudinary    │
+             │ • Videos      │                    └─────────────────┘
+             └───────────────┘
 ```
 
 ---
 
 # 🔐 Authentication & Authorization
 
-The application uses **JWT-based authentication**.
+DevShala uses **JWT-based authentication** with protected routes and role-based authorization.
+
+### Authentication Flow
 
 ```text
 User
@@ -228,9 +255,9 @@ Login / Signup
  ▼
 Express API
  │
- ├── Validate credentials
+ ├── Validate Credentials
  │
- ├── bcrypt password verification
+ ├── bcrypt Password Verification
  │
  └── Generate JWT
  │
@@ -245,15 +272,15 @@ Passwords are securely hashed using **bcrypt** before being stored.
 
 JWT tokens are used to authenticate users when accessing protected resources.
 
-Administrative operations are protected using separate admin authorization middleware.
+Administrative operations are protected using dedicated admin authorization middleware.
 
 ---
 
 # 🗄️ Database
 
-The application uses **MongoDB** with **Mongoose** for database management.
+DevShala uses **MongoDB** with **Mongoose** for database management.
 
-The backend contains separate modules/models for application data such as:
+The application manages data such as:
 
 ```text
 User
@@ -262,18 +289,24 @@ User
  ├── Role
  └── User information
 
+
 Problem
  │
  ├── Problem statement
  ├── Difficulty
+ ├── Test cases
  └── Problem information
+
 
 Submission
  │
  ├── User
  ├── Problem
  ├── Submitted code
+ ├── Language
+ ├── Execution status
  └── Submission information
+
 
 Solution Video
  │
@@ -286,7 +319,7 @@ Solution Video
 
 # 🤖 AI Integration
 
-The application integrates **Google Gemini API** to provide an AI-powered coding assistant.
+DevShala integrates the **Google Gemini API** to provide an AI-powered coding assistant.
 
 ### AI Request Flow
 
@@ -301,7 +334,7 @@ React AI Chat
  ▼
 Express Backend
  │
- │ Gemini API
+ │ Gemini API Request
  ▼
 Google Gemini
  │
@@ -316,7 +349,54 @@ React AI Chat
 User
 ```
 
-The Gemini API key is stored in the backend environment variables rather than being exposed in the frontend.
+The Gemini API key is stored in backend environment variables rather than being exposed in the frontend.
+
+---
+
+# ⚡ Judge0 Integration
+
+Judge0 acts as the execution layer between the DevShala backend and submitted source code.
+
+### Code Execution Process
+
+```text
+                    User
+                      │
+                      ▼
+               Monaco Editor
+                      │
+                      │ Source Code
+                      ▼
+               Express Backend
+                      │
+                      │ Submission Request
+                      ▼
+                  Judge0 API
+                      │
+             ┌────────┴────────┐
+             ▼                 ▼
+        Compilation       Test Execution
+             │                 │
+             └────────┬────────┘
+                      ▼
+               Execution Result
+                      │
+                      ▼
+               Express Backend
+                      │
+          ┌───────────┴───────────┐
+          ▼                       ▼
+     Save Submission        Return Result
+          │                       │
+          └───────────┬───────────┘
+                      ▼
+                React Frontend
+                      │
+                      ▼
+                     User
+```
+
+This architecture keeps code execution separate from the main application server while allowing the platform to process programming submissions.
 
 ---
 
@@ -357,15 +437,16 @@ The admin panel provides protected functionality for managing platform content.
 
 ### Problem Management
 
-* Create problems
-* Delete problems
-* Manage problem information
+- Create problems
+- Delete problems
+- Manage problem information
+- Configure test cases
 
 ### Video Management
 
-* Upload solution videos
-* Manage solution videos
-* Associate videos with coding problems
+- Upload solution videos
+- Manage solution videos
+- Associate videos with coding problems
 
 ### Authorization
 
@@ -373,169 +454,146 @@ Only authorized administrators can access administrative operations.
 
 ---
 
-# 💻 Installation & Setup
+# 📌 Project Highlights
 
-## 1. Clone Repository
-
-```bash
-git clone https://github.com/Vikash-jadaun/LeetCode-Project.git
-
-cd LeetCode-Project
-```
-
----
-
-## 2. Backend Setup
-
-Navigate to the backend:
-
-```bash
-cd Backend
-```
-
-Install dependencies:
-
-```bash
-npm install
-```
-
-Create a `.env` file inside the `Backend` directory.
-
-Example:
-
-```env
-PORT=3000
-
-DB_CONNECTION_STRING=your_mongodb_connection_string
-
-JWT_SECRET=your_jwt_secret
-
-GEMINI_API_KEY=your_gemini_api_key
-
-CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
-
-CLOUDINARY_API_KEY=your_cloudinary_api_key
-
-CLOUDINARY_API_SECRET=your_cloudinary_api_secret
-```
-
-> Add only the environment variables actually required by your backend configuration.
+| Feature | Technology |
+|---|---|
+| Frontend | React + Vite |
+| Styling | Tailwind CSS + DaisyUI |
+| State Management | Redux Toolkit |
+| Code Editor | Monaco Editor |
+| Code Execution | Judge0 |
+| Backend | Node.js + Express |
+| Database | MongoDB |
+| ODM | Mongoose |
+| Authentication | JWT + bcrypt |
+| AI Assistant | Google Gemini |
+| Media Storage | Cloudinary |
+| Token Management | Redis |
+| Deployment | Vercel + Render |
 
 ---
 
-## 3. Start Backend
-
-For development using Nodemon:
-
-```bash
-npx nodemon src/index.js
-```
-
-Or start normally:
-
-```bash
-node src/index.js
-```
-
-The backend will run on the configured port.
-
----
-
-# 🌐 Frontend Setup
-
-Open another terminal and navigate to the frontend:
-
-```bash
-cd Frontend
-```
-
-Install dependencies:
-
-```bash
-npm install
-```
-
-If your frontend requires an environment variable, create:
+# 🔄 Overall Application Flow
 
 ```text
-.env
+                         ┌───────────────┐
+                         │     User      │
+                         └───────┬───────┘
+                                 │
+                                 ▼
+                    ┌────────────────────────┐
+                    │    React Frontend      │
+                    │                        │
+                    │  Problems / Editor     │
+                    │  AI Assistant          │
+                    │  Videos / Submissions  │
+                    └───────────┬────────────┘
+                                │
+                                ▼
+                    ┌────────────────────────┐
+                    │    Express Backend     │
+                    │                        │
+                    │ Authentication         │
+                    │ Problem Management     │
+                    │ Submission Management  │
+                    │ AI Integration         │
+                    │ Admin Operations       │
+                    └───────┬───────┬────────┘
+                            │       │
+                 ┌──────────┘       └──────────┐
+                 ▼                             ▼
+          ┌─────────────┐               ┌─────────────┐
+          │   MongoDB   │               │   Judge0    │
+          │             │               │             │
+          │ Users       │               │ Compile     │
+          │ Problems    │               │ Execute     │
+          │ Submissions │               │ Test Cases  │
+          └─────────────┘               └─────────────┘
+                            │
+                            ▼
+                    ┌────────────────┐
+                    │ External APIs  │
+                    │                │
+                    │ Gemini         │
+                    │ Cloudinary     │
+                    └────────────────┘
 ```
-
-Example:
-
-```env
-VITE_API_URL=http://localhost:3000
-```
-
-Start the development server:
-
-```bash
-npm run dev
-```
-
-The application will then be available through the Vite development server.
 
 ---
 
-# 🔑 Environment Variables
+# 🌐 Deployment
 
-Never upload sensitive credentials to GitHub.
-
-Keep the following types of values inside `.env` files:
-
-* MongoDB connection string
-* JWT secret
-* Gemini API key
-* Cloudinary credentials
-* Other private API credentials
-
-Add `.env` to `.gitignore`:
-
-```gitignore
-node_modules/
-.env
-.env.local
-dist/
-```
-
----
-
-# 🚀 Deployment
-
-The frontend is deployed using **Vercel**.
+The DevShala frontend is deployed using **Vercel**.
 
 ### Production Application
 
-🚀 **https://https://devshala-rho.vercel.app//**
+🚀 **[https://devshala-rho.vercel.app/](https://devshala-rho.vercel.app/)**
 
 The frontend communicates with the deployed backend through the configured API URL.
 
-For deployment, make sure all required environment variables are configured in the hosting platform.
+Required environment variables are configured through the deployment platform rather than being exposed in the public repository.
 
 ---
 
-# 🧪 Development Commands
+# 🔒 Security & Environment Variables
 
-### Frontend
+Sensitive credentials are **never included in the public documentation repository**.
 
-```bash
-cd Frontend
-npm install
-npm run dev
+Examples of sensitive values include:
+
+```text
+MongoDB connection string
+JWT secret
+Gemini API key
+Cloudinary credentials
+Judge0 API configuration
+Other private API credentials
 ```
 
-### Backend
+These values should be stored using environment variables.
 
-```bash
-cd Backend
-npm install
-npx nodemon src/index.js
+Example:
+
+```env
+DB_CONNECTION_STRING=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+GEMINI_API_KEY=your_gemini_api_key
+
+CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
+CLOUDINARY_API_KEY=your_cloudinary_api_key
+CLOUDINARY_API_SECRET=your_cloudinary_api_secret
+
+JUDGE0_API_URL=your_judge0_api_url
 ```
 
-### Production Backend
+> Never commit real API keys, database credentials, JWT secrets, or other private configuration values to GitHub.
 
-```bash
-node src/index.js
+---
+
+# 📚 Project Architecture
+
+DevShala follows a separate **frontend + backend architecture**.
+
+```text
+DevShala
+│
+├── Frontend
+│   ├── React
+│   ├── Redux Toolkit
+│   ├── React Router
+│   ├── Monaco Editor
+│   └── Tailwind CSS
+│
+└── Backend
+    ├── Node.js
+    ├── Express.js
+    ├── MongoDB
+    ├── Redis
+    ├── JWT Authentication
+    ├── Judge0 Integration
+    ├── Gemini Integration
+    └── Cloudinary Integration
 ```
 
 ---
@@ -544,74 +602,82 @@ node src/index.js
 
 Through this project, I gained practical experience in:
 
-* Full-stack MERN development
-* REST API development
-* React application architecture
-* Redux Toolkit state management
-* JWT authentication
-* Role-based authorization
-* Password hashing with bcrypt
-* MongoDB and Mongoose
-* Protected API routes
-* Monaco Editor integration
-* AI API integration
-* Cloudinary media management
-* Frontend-backend communication
-* Environment variable management
-* Admin dashboard development
-* Full-stack deployment
+- Full-stack MERN development
+- REST API development
+- React application architecture
+- Redux Toolkit state management
+- JWT authentication
+- Role-based authorization
+- Password hashing with bcrypt
+- MongoDB and Mongoose
+- Protected API routes
+- Monaco Editor integration
+- Judge0 code execution integration
+- AI API integration
+- Google Gemini API
+- Cloudinary media management
+- Redis-based token management
+- Frontend-backend communication
+- Environment variable management
+- Admin dashboard development
+- Full-stack deployment
 
 ---
 
-# 📌 Project Highlights
+# 🚀 Future Improvements
 
-| Feature          | Technology             |
-| ---------------- | ---------------------- |
-| Frontend         | React + Vite           |
-| Styling          | Tailwind CSS + DaisyUI |
-| State Management | Redux Toolkit          |
-| Code Editor      | Monaco Editor          |
-| Backend          | Node.js + Express      |
-| Database         | MongoDB                |
-| ODM              | Mongoose               |
-| Authentication   | JWT + bcrypt           |
-| AI Assistant     | Google Gemini          |
-| Media Storage    | Cloudinary             |
-| Deployment       | Vercel & Render        |
+- [ ] Advanced code execution analytics
+- [ ] More programming language support
+- [ ] Problem filtering by difficulty
+- [ ] Problem filtering by topic
+- [ ] User profiles
+- [ ] Coding statistics
+- [ ] Leaderboard
+- [ ] Daily coding challenges
+- [ ] Coding contests
+- [ ] Detailed submission analytics
+- [ ] Automated testing improvements
+- [ ] CI/CD pipeline
+- [ ] Docker support
 
 ---
 
-# 🔮 Future Improvements
+# 🔒 Source Code
 
-* [ ] Online code execution
-* [ ] Multiple programming language support
-* [ ] Problem filtering by difficulty
-* [ ] Problem filtering by topic
-* [ ] User profiles
-* [ ] Coding statistics
-* [ ] Leaderboard
-* [ ] Daily coding challenges
-* [ ] Coding contests
-* [ ] Detailed submission analytics
-* [ ] Automated testing
-* [ ] CI/CD pipeline
-* [ ] Docker support
+The production source code is maintained in a **private repository**.
+
+This public repository contains the **project documentation, architecture, features, technology stack, and project information**.
+
+The application can be accessed through the live demo:
+
+🚀 **[Open DevShala](https://devshala-rho.vercel.app/)**
 
 ---
 
 # 👨‍💻 Author
 
-## Raj Gupta 
+## Raj Gupta
 
-B.Tech CS Student
+**B.Tech Computer Science Student**
 
+Full-Stack MERN Developer
 
-🚀 **Live Project:** [LeetCode Clone](https://devshala-rho.vercel.app/)
+### Technologies
+
+`React` `Node.js` `Express` `MongoDB` `Redux` `Judge0` `Gemini AI` `Redis`
+
+---
+
+## 🌐 Live Project
+
+🚀 **[DevShala](https://devshala-rho.vercel.app/)**
 
 ---
 
 ## ⭐ Support
 
-If you found this project useful or interesting, consider giving the repository a ⭐ on GitHub.
+If you found this project useful or interesting, consider giving the documentation repository a ⭐ on GitHub.
 
-**Built with ❤️ using the MERN stack.**
+---
+
+### Built with ❤️ using the MERN stack
