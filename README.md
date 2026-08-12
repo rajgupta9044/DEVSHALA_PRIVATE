@@ -11,7 +11,6 @@ The project follows a separate **Frontend + Backend architecture**, with a React
 | Resource                 | Link                                                                            |
 | ------------------------ | ------------------------------------------------------------------------------- |
 | 🚀 **Live Application**  | [Open Devshala](https://devshala-rho.vercel.app/) |
-        |
 
 ---
 
